@@ -1,4 +1,3 @@
-// NavBar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
@@ -16,7 +15,7 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="bg-gray-800 py-4">
+        <nav className="bg-gray-800 py-6">
             <div className="container mx-auto flex justify-between items-center">
                 <Link
                     to="/"
@@ -36,7 +35,10 @@ const NavBar = () => {
                     </Link>
                     {!cookies.access_token ? (<Link to="/auth" className="text-white mr-4 hover:text-gray-300">Authentication</Link>
                     ) : (<button onClick={logout}
-                        className='text-white mr-12 hover:text-gray-300'>
+                        className='text-white mr-12 hover:text-black
+                        border-2 border-white p-2 rounded-xl
+                        hover:bg-white delay-75 transition
+                        '>
                         Logout
                     </button>)}
                 </div>
