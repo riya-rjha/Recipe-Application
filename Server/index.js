@@ -5,6 +5,7 @@ import 'dotenv/config';
 import { userRouter } from './Routes/users.js';
 
 const app = express();
+// Parsing Middleware
 app.use(express.json());
 app.use(cors());
 

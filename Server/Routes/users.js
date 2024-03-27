@@ -14,7 +14,7 @@ router.post("/register", async (req, res) => {
         return res.json({ message: "User already exists!" });
     }
     else {
-        const hashedPwd = await bcrypt.hash(password, 10);
+        const hashedPwd = await bcrypt.hash(password, 10); // 10 represents number of rounds in hashing process
         const newUser = new UserModel({ username, password: hashedPwd });
         await newUser.save();
     }
@@ -34,9 +34,12 @@ router.post("/login", async (req, res) => {
         return res.json({ message: "The password is incorrect!" });
     }
 
+    // JWT - Creates a token of payload (identification data) & secret key
+    // Secret Key is used by servers
+    // Token is returned to client for future use along with user id
     const token = jwt.sign({ id: user._id }, process.env.JWT_secret);
     res.json({ token, userID: user._id });
-
+    // _id from database
 })
 
 export { router as userRouter };

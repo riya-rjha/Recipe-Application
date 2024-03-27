@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
 
+    // Cookies that saves previous data of recipes
+    // of the user ( client side )
     const [cookies, setCookies] = useCookies(['access_token']);
     const navigate = useNavigate();
 
