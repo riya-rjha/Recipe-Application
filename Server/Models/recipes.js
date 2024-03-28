@@ -25,7 +25,7 @@ const RecipeSchema = new Schema({
         required: true,
     },
     userOwner: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, // ObjectId provided by Mongoose(MongoDB)
         ref: "users",
         required: true,
     },
