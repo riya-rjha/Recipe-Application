@@ -11,9 +11,9 @@ const Register = () => {
         e.preventDefault();
         try {
             await axios.post('http://localhost:5000/auth/register', { username, password });
-            toast.success('User Registered Successfully! Now Login.');
+            toast.success('User Registered Successfully! Now Login 😎');
         } catch (error) {
-            toast.error('Oops! The user could not be registered! It seems the user already exists.');
+            toast.error('Oops! The user could not be registered! It seems the user already exists 🤔');
             console.error(error.message);
         }
     };

@@ -22,7 +22,7 @@ const Login = () => {
             navigate('/');
         } catch (error) {
             console.error(error.message);
-            toast.error('User is not registered!');
+            toast.error('User is not registered😪');
         }
     };
 
