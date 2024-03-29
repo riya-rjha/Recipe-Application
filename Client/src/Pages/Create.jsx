@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { userGetID } from '../Hooks/useGetUserID.jsx';
 
 const CreateRecipe = () => {
+
+    const userID = userGetID();
+
     const [recipe, setRecipe] = useState({
         name: '',
         ingredients: [],
         instructions: '',
         imageUrl: '',
         cookingTime: 0,
-        userOwner: 0
+        userOwner: userID
     });
 
 
@@ -46,8 +50,6 @@ const CreateRecipe = () => {
             toast.error('Recipe could not be created 😢')
         }
     }
-
-    console.log(recipe);
 
     return (
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
