@@ -7,7 +7,11 @@ const Home = () => {
     const [recipes, setRecipes] = useState([]);
     const [savedRecipes, setSavedRecipes] = useState([]);
 
-    const userID = useGetUserID();
+    let userID = useGetUserID();
+
+    if(userID === null){
+        userID = "65ffee9462a30d065b80f9fc";
+    }
 
     useEffect(() => {
         const fetchRecipes = async () => {
