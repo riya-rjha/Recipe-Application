@@ -31,6 +31,11 @@ const Saved = () => {
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-3xl font-bold m-12 text-center">Saved Recipes</h1>
+      {!userID ?
+        (<p className='text-2xl font-semibold my-8 text-center text-[#4b0097]'>When you create an account, all the saved recipes will appear here!</p>)
+        :
+        (<p></p>)
+      }
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 m-10 ">
         {savedRecipes.map((recipe) => (
           <div key={recipe._id} className="border border-gray-300 rounded-md p-4 shadow-lg">
