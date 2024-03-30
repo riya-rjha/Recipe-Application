@@ -1,4 +1,5 @@
 import { RecipeModel } from "../Models/recipes.js";
+import { UserModel } from "../Models/users.js";
 import express from 'express';
 
 const router = express.Router();
@@ -22,39 +23,43 @@ router.post('/', async (request, response) => {
     }
 });
 
-router.put('/', async (request, response) => {
+// Save a Recipe
+router.put("/", async (req, res) => {
+    const recipe = await RecipeModel.findById(req.body.recipeID);
+    const user = await UserModel.findById(req.body.userID);
     try {
-        const recipe = await RecipeModel.findById(request.body.recipeID);
-        const user = await UserModel.findById(request.body.userID);
         user.savedRecipes.push(recipe);
         await user.save();
-        response.json({ savedRecipes: user.savedRecipes });
-    } catch (error) {
-        response.json(error);
+        res.status(201).json({ savedRecipes: user.savedRecipes });
+    } catch (err) {
+        res.status(500).json(err);
     }
-})
+});
 
-// Get Saved Recipes By IDS
-router.get('/savedRecipes/ids/:userId', async (req, res) => {
+// Get id of saved recipes
+router.get("/savedRecipes/ids/:userId", async (req, res) => {
     try {
         const user = await UserModel.findById(req.params.userId);
-        res.json({ savedRecipes: user?.savedRecipes });
-    } catch (error) {
-        res.json(error);
+        res.status(201).json({ savedRecipes: user?.savedRecipes });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
-})
+});
 
-// Get Saved Recipes
-router.get('/savedRecipes/:userId', async (req, res) => {
+// Get saved recipes
+router.get("/savedRecipes/:userId", async (req, res) => {
     try {
         const user = await UserModel.findById(req.params.userId);
         const savedRecipes = await RecipeModel.find({
-            _id: { $in: user.savedRecipes }
+            _id: { $in: user.savedRecipes },
         });
-        res.json({ savedRecipes });
-    } catch (error) {
-        res.json(error);
-    }
-})
 
+        console.log(savedRecipes);
+        res.status(201).json({ savedRecipes });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 export { router as RecipesRouter }

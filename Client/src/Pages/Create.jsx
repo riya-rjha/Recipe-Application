@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { userGetID } from '../Hooks/useGetUserID.jsx';
+import { useGetUserID } from '../Hooks/useGetUserID.jsx';
 
 const CreateRecipe = () => {
 
-    const userID = userGetID();
+    const userID = useGetUserID();
 
     const [recipe, setRecipe] = useState({
         name: '',

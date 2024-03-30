@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { userGetID } from '../Hooks/useGetUserID.jsx';
+import { useGetUserID } from '../Hooks/useGetUserID.jsx';
 
 const Saved = () => {
 
   const [savedRecipes, setSavedRecipes] = useState([]);
 
-  const userID = userGetID();
+  const userID = useGetUserID();
 
   useEffect(() => {
 
@@ -28,7 +28,7 @@ const Saved = () => {
     <div className="container mx-auto px-4">
       <h1 className="text-3xl font-bold m-12 text-center">Saved Recipes</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 m-10 ">
-        {savedRecipes?.map((recipe) => (
+        {savedRecipes.map((recipe) => (
           <div key={recipe._id} className="border border-gray-300 rounded-md p-4 shadow-lg">
             <img src={recipe.imageUrl} alt={recipe.name} className="w-full h-60 object-cover mb-4 rounded-md" />
             <div className="flex justify-between items-center mb-2">
