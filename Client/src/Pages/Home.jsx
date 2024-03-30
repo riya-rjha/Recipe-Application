@@ -51,6 +51,12 @@ const Home = () => {
     return (
         <div className="container mx-auto px-4">
             <h1 className="text-3xl font-bold m-12 text-center">Recipes</h1>
+            {!userID ?
+                (<p className='text-2xl font-semibold my-8 text-center text-[#4b0097]'>Login or Register to create your own recipes and save them for later!</p>)
+                :
+                (<p></p>)
+            }
+
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 m-10 ">
                 {recipes.map((recipe) => (
                     <li key={recipe._id} className="border border-gray-300 rounded-md p-4 shadow-lg">
