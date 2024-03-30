@@ -8,10 +8,6 @@ const Saved = () => {
 
   let userID = useGetUserID();
 
-  if (userID === null) {
-    userID = "65ffee9462a30d065b80f9fc";
-  }
-
   useEffect(() => {
 
     const fetchSavedRecipes = async () => {
