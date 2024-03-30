@@ -12,7 +12,7 @@ const Saved = () => {
 
     const fetchSavedRecipes = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/recipes/savedRecipes/${userID}`);
+        const response = await axios.get(`https://recipe-application-hcbe.onrender.com/recipes/savedRecipes/${userID}`);
         setSavedRecipes(response.data.savedRecipes);
         console.log(response);
       } catch (error) {

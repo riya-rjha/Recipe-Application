@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify'; 
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
@@ -10,7 +10,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/auth/register', { username, password });
+            await axios.post('https://recipe-application-hcbe.onrender.com/auth/register', { username, password });
             toast.success('User Registered Successfully! Now Login 😎');
         } catch (error) {
             toast.error('Oops! The user could not be registered! It seems the user already exists 🤔');
@@ -44,7 +44,7 @@ const Register = () => {
                 </div>
                 <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Register</button>
             </form>
-            <ToastContainer /> 
+            <ToastContainer />
         </div>
     );
 };

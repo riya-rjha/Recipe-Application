@@ -43,7 +43,7 @@ const CreateRecipe = () => {
     const submitRecipe = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/recipes', recipe);
+            await axios.post('https://recipe-application-hcbe.onrender.com/recipes', recipe);
             toast.success('Recipe Created Successfully 😄');
         } catch (error) {
             console.log(error.message);
