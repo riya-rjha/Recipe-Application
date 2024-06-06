@@ -17,7 +17,7 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="bg-gray-800 py-6">
+        <nav className="bg-gray-800 py-6 sticky top-0">
             <div className="container mx-auto flex justify-between items-center">
                 <Link
                     to="/"
